@@ -75,7 +75,7 @@ function render(list){list=list.slice().sort((a,b)=>b.t-a.t);
 const all=()=>REMOTE?remote.concat(store):store;
 async function loadRemote(){
   if(SB){try{
-    const r=await fetch(`${SB.url}/rest/v1/rsvp?invitation=eq.${encodeURIComponent(SB.inv)}&select=name,attendance,guests,message,created_at&order=created_at.desc&limit=200`,{headers:{apikey:SB.key}});
+    const r=await fetch(`${SB.url}/rest/v1/rpc/get_wishes`,{method:"POST",headers:{apikey:SB.key,"Content-Type":"application/json"},body:JSON.stringify({p_invitation:SB.inv})});
     if(!r.ok){loadErr="kode "+r.status;render(all());return}loadErr="";const d=await r.json();
     if(Array.isArray(d)){remote=d.map(x=>({n:x.name,a:C2A[x.attendance]||"",g:x.guests,m:x.message||"",t:Date.parse(x.created_at)||0}));render(all())}
   }catch(e){loadErr="jaringan: "+(e&&e.message||e);if(DBG)console.error(e);render(all())}return}
