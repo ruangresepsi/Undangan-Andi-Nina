@@ -64,7 +64,7 @@ const CONFIG = {
   /* ---------- RSVP ---------- */
   /* Nomor WhatsApp penerima konfirmasi, format 628123456789 (tanpa + atau 0 di depan).
      Selama masih [NOMOR WHATSAPP], tombol "Kirim via WhatsApp" disembunyikan. */
-  whatsapp: "6281234567890",
+  whatsapp: "6283159500504",
   /* Opsional: simpan RSVP & buku tamu di database agar tampil untuk semua tamu.
      - supabase: isi url, key (publishable/anon key, BUKAN service_role), dan invitation (kode unik tiap pelanggan, contoh "andi-nina").
      - url: alternatif Google Apps Script (Google Sheets); dipakai hanya jika supabase kosong.
