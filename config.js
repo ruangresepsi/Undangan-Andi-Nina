@@ -15,7 +15,7 @@ const CONFIG = {
      "terracotta" Terracotta Boho     "burgundy"  Burgundy Velvet
      "emerald"    Emerald Royale      "lavender"  Lavender Dream
      "navy"       Navy & Gold         "midnight"  Midnight Luxe (gelap) */
-  theme: "blush",
+  theme: "dustyblue",
   /* OPSIONAL: timpa warna tertentu saja sesuai permintaan klien, sisanya tetap dari tema. Contoh:
      colors: { char: "#1b2a49", mute: "#5c6b86", gold: "#c0a060" }
      char = teks utama | mute = teks sekunder | gold = aksen | ivory = latar | cream = latar seksi | deep = latar gelap */
