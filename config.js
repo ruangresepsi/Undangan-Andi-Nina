@@ -8,6 +8,19 @@
 const CONFIG = {
   brand: "Ruang Resepsi",              /* tampil kecil di penutup; kosongkan ("") untuk menyembunyikan */
 
+  /* ---------- TEMA WARNA & FONT ---------- */
+  /* Pilih satu (tiap tema sudah termasuk pasangan font-nya; detail di themes.js):
+     "champagne"  Champagne Gold      "blush"     Blush Rose
+     "sage"       Sage Garden         "dustyblue" Dusty Blue
+     "terracotta" Terracotta Boho     "burgundy"  Burgundy Velvet
+     "emerald"    Emerald Royale      "lavender"  Lavender Dream
+     "navy"       Navy & Gold         "midnight"  Midnight Luxe (gelap) */
+  theme: "champagne",
+  /* OPSIONAL: timpa warna tertentu saja sesuai permintaan klien, sisanya tetap dari tema. Contoh:
+     colors: { char: "#1b2a49", mute: "#5c6b86", gold: "#c0a060" }
+     char = teks utama | mute = teks sekunder | gold = aksen | ivory = latar | cream = latar seksi | deep = latar gelap */
+  colors: {},
+
   /* ---------- MEMPELAI ---------- */
   groom: { short: "Andi",  full: "Andi Pratama Wijaya, S.T.",   child: "Putra pertama dari", parents: "Bapak Hendra Wijaya & Ibu Ratna Sari", photo: "assets/photos/groom.jpg" },
   bride: { short: "Nina",  full: "Nina Safira Anggraini, S.Pd.", child: "Putri kedua dari",   parents: "Bapak Bambang Hartono & Ibu Dewi Lestari", photo: "assets/photos/bride.jpg" },

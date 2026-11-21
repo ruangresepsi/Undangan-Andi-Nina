@@ -3,10 +3,18 @@
 const $=s=>document.querySelector(s), C=CONFIG, D=new Date(C.date), OK=!isNaN(D);
 const MON=["Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"];
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-const tones=[["#efe3cd","#d9c4a0"],["#e9dcc6","#c9b08a"],["#f1e8d8","#d5bf9b"],["#e4d3b6","#bda47e"]];
+/* Tema warna + font: data di themes.js, dipilih lewat CONFIG.theme; CONFIG.colors (opsional) menimpa warna tertentu */
+const TH=THEMES[C.theme]||THEMES.champagne,COL=Object.assign({},TH.c,C.colors||{});
+{const R=document.documentElement.style,rgb=h=>{h=String(h).replace("#","");if(h.length===3)h=h.replace(/./g,"$&$&");return[0,2,4].map(i=>parseInt(h.substr(i,2),16)||0).join(",")};
+for(const k in COL)R.setProperty("--"+k,COL[k]);
+R.setProperty("--ov",rgb(COL.deep));R.setProperty("--ivrgb",rgb(COL.ivory));
+R.setProperty("--fh",TH.fh);R.setProperty("--fb",TH.fb);R.setProperty("--hs",TH.hs||1);
+const l=document.createElement("link");l.rel="stylesheet";l.href="https://fonts.googleapis.com/css2?"+TH.g.map(f=>"family="+f).join("&")+"&display=swap";document.head.appendChild(l);
+const m=document.querySelector('meta[name="theme-color"]');if(m)m.content=COL.ivory}
+const cv=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
 function ph(src,i){ if(src) return `url("${src}")`;
-  const [a,b]=tones[i%4];
-  const svg=`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 500'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='${a}'/><stop offset='1' stop-color='${b}'/></linearGradient></defs><rect width='400' height='500' fill='url(%23g)'/><g fill='none' stroke='%23b08d57' stroke-opacity='.55' stroke-width='1.2'><circle cx='200' cy='210' r='46'/><path d='M120 440c0-70 36-120 80-120s80 50 80 120'/><path d='M200 164c-30-40-8-72 0-72s30 32 0 72z'/></g></svg>`;
+  const [a,b]=[[cv("--cream"),cv("--champ")],[cv("--champ"),cv("--beige")]][i%2],g=cv("--gold");
+  const svg=`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 500'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='${a}'/><stop offset='1' stop-color='${b}'/></linearGradient></defs><rect width='400' height='500' fill='url(%23g)'/><g fill='none' stroke='${g}' stroke-opacity='.55' stroke-width='1.2'><circle cx='200' cy='210' r='46'/><path d='M120 440c0-70 36-120 80-120s80 50 80 120'/><path d='M200 164c-30-40-8-72 0-72s30 32 0 72z'/></g></svg>`;
   return `url("data:image/svg+xml;utf8,${svg.replace(/#/g,'%23').replace(/\n/g,'')}")`; }
 const setBg=(el,src,i)=>el.style.backgroundImage=ph(src,i);
 const fmtDate=d=>`${d.getDate()} ${MON[d.getMonth()]} ${d.getFullYear()}`;
